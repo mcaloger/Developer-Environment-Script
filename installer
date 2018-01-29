@@ -1,0 +1,48 @@
+#!/bin/sh
+
+#update apt
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+#install curl
+sudo apt-get curl -y
+
+#install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+#reinitialize after install
+reset
+
+#check nvm
+nvm -v
+
+#install nodejs
+nvm install --lts
+nvm use --lts
+
+#install npm
+sudo apt-get install npm -y
+
+#check nodejs and npm
+nodejs -v
+npm -v
+
+#install docker
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common -y
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+
+sudo apt-get install docker-ce
