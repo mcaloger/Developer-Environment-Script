@@ -28,6 +28,9 @@ sudo apt-get install npm -y
 nodejs -v
 npm -v
 
+# symlink node -> nodejs
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+
 #install docker
 sudo apt-get install \
     apt-transport-https \
